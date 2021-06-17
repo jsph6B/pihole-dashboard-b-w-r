@@ -19,7 +19,7 @@
 import time
 import sys
 import os
-from waveshare_epd import epd2in13_V2
+from waveshare_epd import epd2in13bc
 from PIL import Image, ImageFont, ImageDraw
 
 FILENAME = "/tmp/.pihole-dashboard-output"
