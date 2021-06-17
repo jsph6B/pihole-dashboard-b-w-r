@@ -25,7 +25,7 @@ import os
 import sys
 import hashlib
 import netifaces as ni
-from waveshare_epd import epd2in13_V2
+from waveshare_epd import epd2in13bc
 from PIL import Image, ImageFont, ImageDraw
 
 if os.geteuid() != 0:
@@ -43,7 +43,7 @@ font_name = os.path.join(font_dir, "font.ttf")
 font16 = ImageFont.truetype(font_name, 16)
 font12 = ImageFont.truetype(font_name, 12)
 
-epd = epd2in13_V2.EPD()
+epd = epd2in13bc.EPD()
 epd.init(epd.FULL_UPDATE)
 
 
