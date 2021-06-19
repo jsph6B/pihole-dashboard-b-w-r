@@ -1,32 +1,17 @@
-#!/usr/bin/env python3
-
-# pihole-dashboard
-# Copyright (C) 2021  santoru
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
-import subprocess
-import socket
-from time import localtime, strftime
-import urllib.request
-import json
-import os
+#!/usr/bin/python
+# -*- coding:utf-8 -*-
 import sys
-import hashlib
-import netifaces as ni
+import os
+picdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'pic')
+libdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'lib')
+if os.path.exists(libdir):
+    sys.path.append(libdir)
+
+import logging
 from waveshare_epd import epd2in13bc
-from PIL import Image, ImageFont, ImageDraw
+import time
+from PIL import Image,ImageDraw,ImageFont
+import traceback
 
 if os.geteuid() != 0:
     sys.exit("You need root permissions to access E-Ink display, try running with sudo!")
